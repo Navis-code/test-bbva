@@ -1,1 +1,6 @@
-<p>game works!</p>
+<ng-container *ngIf="(authService.currentUser$ | async) as user">
+    <p>USERNAME: {{user.name}}</p>
+    <p>WIN: {{user.gameStats.win}}</p>
+    <p>LOSE: {{user.gameStats.lose}}</p>
+    <button (click)="saveUser(user)">SAVE USER</button>
+</ng-container>

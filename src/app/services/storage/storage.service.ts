@@ -28,10 +28,20 @@ export class StorageService {
   }
 
   setNewUser(user: UserI): void {
+    const users = this.getAllUsers() ?? [];
+    users.push(user);
+    localStorage.setItem(this.usersItem, JSON.stringify(users));
+  }
+
+  updateUser(user: UserI): void {
     const users = this.getAllUsers();
     if (users) {
-      users.push(user);
-      localStorage.setItem(this.usersItem, JSON.stringify(users));
+      const filterUsers = users.filter(
+        (userFromStorage: UserI) =>
+          userFromStorage.name.toLowerCase() !== user.name.toLowerCase()
+      );
+      filterUsers.push(user);
+      localStorage.setItem(this.usersItem, JSON.stringify(filterUsers));
     }
   }
 }
