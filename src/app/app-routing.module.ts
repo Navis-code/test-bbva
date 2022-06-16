@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
       import(
         /*webpackChunkName: "gameModule" */ './modules/game/game.module'
       ).then((m) => m.GameModule),
+    canActivate: [AuthGuard],
   },
   { path: '**', redirectTo: 'home' },
 ];
