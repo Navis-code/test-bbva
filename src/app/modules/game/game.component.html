@@ -1,1 +1,13 @@
 <app-user-profile [currentUser]="authService.currentUser$ | async" [updateUserFunction]="saveUser"></app-user-profile>
+<br>
+<ng-container *ngFor="let option of game">
+    <button (click)="userSelect(option)">{{option.name}} | {{option.visual}}</button>
+    <hr>
+</ng-container>
+<br>
+<br>
+<h2>GAMES AVAILABLE</h2>
+<ng-container *ngFor="let game of gamesAvailable">
+    <button (click)="loadGame(game.gameConfig)">{{game.name}}</button>
+    <hr>
+</ng-container>
