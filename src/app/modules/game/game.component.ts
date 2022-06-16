@@ -12,9 +12,9 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  saveUser(user: UserI): void {
-    //TOOD: connect with game
+  saveUser = (user: UserI): void => {
+    //TODO: connect with game
     user.gameStats.win++;
     this.authService.saveCurrentUser(user);
-  }
+  };
 }

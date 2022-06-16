@@ -1,0 +1,6 @@
+<ng-container *ngIf="currentUser">
+    <p>USERNAME: {{currentUser.name}}</p>
+    <p>WIN: {{currentUser.gameStats.win}}</p>
+    <p>LOSE: {{currentUser.gameStats.lose}}</p>
+    <button (click)="updateUserFunction(currentUser)">SAVE USER</button>
+</ng-container>
