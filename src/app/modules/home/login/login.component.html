@@ -1,0 +1,5 @@
+<form [formGroup]="logInForm">
+    <h2>Log In</h2>
+    <input placeholder="Name" type="text" formControlName="name">
+    <button [disabled]="logInForm.invalid" (click)="login()">Join</button>
+</form>
