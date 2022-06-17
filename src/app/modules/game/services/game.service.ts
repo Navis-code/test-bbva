@@ -7,18 +7,18 @@ import {
 } from '../../../models/Game';
 import { UserI } from '../../../models/User';
 import { wait } from '../../../utils/wait';
-import { GAMES, ROCK_PAPER_SCISSOR } from '../config/game.config';
+import { GAMES } from '../config/game.config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
-  game: GameConfigI[];
+  game: GameI;
   gamesAvailable: GameI[];
   machinePreviousSelection!: number;
 
   constructor() {
-    this.game = ROCK_PAPER_SCISSOR;
+    this.game = GAMES[0];
     this.gamesAvailable = GAMES;
   }
 
@@ -40,17 +40,19 @@ export class GameService {
     };
   }
 
-  changeGame(game: GameConfigI[]): void {
+  changeGame(game: GameI): void {
     this.game = game;
   }
 
   private machineSelection(): GameConfigI {
-    const machineSelectionIndex = Math.floor(Math.random() * this.game.length);
+    const machineSelectionIndex = Math.floor(
+      Math.random() * this.game.gameConfig.length
+    );
     if (this.machinePreviousSelection === machineSelectionIndex) {
       return this.machineSelection();
     }
     this.machinePreviousSelection = machineSelectionIndex;
-    const machineSelection = this.game[machineSelectionIndex];
+    const machineSelection = this.game.gameConfig[machineSelectionIndex];
     return machineSelection;
   }
 

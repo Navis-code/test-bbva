@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameConfigI, GameMatchI } from '../../models/Game';
+import { GameConfigI, GameI, GameMatchI } from '../../models/Game';
 import { UserI } from '../../models/User';
 import { AuthService } from '../../services/auth/auth.service';
 import { GameService } from './services/game.service';
@@ -27,7 +27,7 @@ export class GameComponent implements OnInit {
     this.authService.saveCurrentUser(this.matchResult.updatedUser);
   }
 
-  changeToOtherGame = (game: GameConfigI[]): void => {
+  changeToOtherGame = (game: GameI): void => {
     this.gameService.changeGame(game);
     this.showGames = !this.showGames;
   };

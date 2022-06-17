@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GameConfigI, GameI } from '../../../../models/Game';
+import { GameI } from '../../../../models/Game';
 
 @Component({
   selector: 'app-modal-game-selection',
@@ -9,7 +9,7 @@ import { GameConfigI, GameI } from '../../../../models/Game';
 export class ModalGameSelectionComponent implements OnInit {
   @Input() showModal = false;
   @Input() gamesAvailable: GameI[] = [];
-  @Input() changeGameFunction!: (args: GameConfigI[]) => void;
+  @Input() changeGameFunction!: (args: GameI) => void;
 
   constructor() {}
 

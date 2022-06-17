@@ -28,7 +28,7 @@
                 </div>
                 <div class="px-4 py-3 bg-gray-50">
                     <ng-container *ngFor="let game of gamesAvailable">
-                        <button (click)="changeGameFunction(game.gameConfig)"
+                        <button (click)="changeGameFunction(game)"
                             class="w-full mb-2 btn btn-primary">{{game.name}}</button>
                     </ng-container>
                     <button (click)="showModal = !showModal" type="button"

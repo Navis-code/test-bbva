@@ -19,7 +19,7 @@
             <p *ngIf="!loading" class="text-2xl text-center text-white uppercase">{{matchResult?.result}}</p>
         </div>
         <div class="flex flex-wrap gap-1 justify-evenly max-h-[40vh] flex-[2] items-center overflow-auto">
-            <ng-container *ngFor="let option of gameService.game">
+            <ng-container *ngFor="let option of gameService.game.gameConfig">
                 <button class="game-selection" *ngIf="(authService.currentUser$ | async) as user"
                     (click)="playerSelection(option,user)">
                     {{option.visual}}

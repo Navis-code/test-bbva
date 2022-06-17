@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { GAMES } from '../config/game.config';
 
 import { GameService } from './game.service';
 
@@ -18,5 +19,11 @@ describe('GameService', () => {
     const gameIndex0 = { beats: ['Scissors'], name: 'Rock', visual: '✊' };
     service.machinePreviousSelection = 0;
     expect(service['machineSelection']().name).not.toBe(gameIndex0.name);
+  });
+
+  it('should change game', () => {
+    const game = GAMES[1];
+    service.changeGame(game);
+    expect(service.game).toBe(game);
   });
 });
