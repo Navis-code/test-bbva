@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { wait } from 'src/app/utils/wait';
 import {
   GameConfigI,
   GameI,
@@ -7,6 +6,7 @@ import {
   ResultsEnum,
 } from '../../../models/Game';
 import { UserI } from '../../../models/User';
+import { wait } from '../../../utils/wait';
 import { GAMES, ROCK_PAPER_SCISSOR } from '../config/game.config';
 
 @Injectable({
@@ -15,6 +15,7 @@ import { GAMES, ROCK_PAPER_SCISSOR } from '../config/game.config';
 export class GameService {
   game: GameConfigI[];
   gamesAvailable: GameI[];
+  machinePreviousSelection!: number;
 
   constructor() {
     this.game = ROCK_PAPER_SCISSOR;
@@ -43,6 +44,10 @@ export class GameService {
 
   private machineSelection(): GameConfigI {
     const machineSelectionIndex = Math.floor(Math.random() * this.game.length);
+    if (this.machinePreviousSelection === machineSelectionIndex) {
+      return this.machineSelection();
+    }
+    this.machinePreviousSelection = machineSelectionIndex;
     const machineSelection = this.game[machineSelectionIndex];
     return machineSelection;
   }
