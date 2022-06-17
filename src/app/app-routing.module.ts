@@ -3,9 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: 'home',
+    path: '',
     loadChildren: () =>
       import(
         /*webpackChunkName: "homeModule" */ './modules/home/home.module'
@@ -19,7 +18,7 @@ const routes: Routes = [
       ).then((m) => m.GameModule),
     canActivate: [AuthGuard],
   },
-  { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
