@@ -2,7 +2,23 @@
     <div
         class="min-h-[95vh] flex flex-col justify-evenly w-full max-w-2xl p-4 border-2 rounded-lg shadow-xl border-secondary-500 ">
         <app-user-profile class="w-full mb-auto" [currentUser]="authService.currentUser$ | async"></app-user-profile>
-        <div class="flex flex-wrap gap-1 justify-evenly">
+        <div class="flex-[2] max-h-[40vh] flex flex-col justify-center items-center">
+            <ng-container *ngIf="matchResult && !loading; else noMatchResult">
+                <p class="game-selection machine">{{matchResult.player2Selection.visual}}</p>
+            </ng-container>
+            <ng-template #noMatchResult>
+                <ng-container *ngIf="loading; else noLoading">
+                    <p class="game-selection machine animate-spin">🤖</p>
+                </ng-container>
+                <ng-template #noLoading>
+                    <p class="game-selection machine"></p>
+                </ng-template>
+            </ng-template>
+        </div>
+        <div class="min-h-[2rem]">
+            <p *ngIf="!loading" class="text-2xl text-center text-white uppercase">{{matchResult?.result}}</p>
+        </div>
+        <div class="flex flex-wrap gap-1 justify-evenly max-h-[40vh] flex-[2] items-center">
             <ng-container *ngFor="let option of gameService.game">
                 <button class="game-selection" *ngIf="(authService.currentUser$ | async) as user"
                     (click)="playerSelection(option,user)">

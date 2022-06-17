@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameConfigI } from '../../models/Game';
+import { GameConfigI, GameMatchI } from '../../models/Game';
 import { UserI } from '../../models/User';
 import { AuthService } from '../../services/auth/auth.service';
 import { GameService } from './services/game.service';
@@ -11,6 +11,8 @@ import { GameService } from './services/game.service';
 })
 export class GameComponent implements OnInit {
   showGames = false;
+  matchResult: GameMatchI | null = null;
+  loading = false;
   constructor(
     public authService: AuthService,
     public gameService: GameService
@@ -18,11 +20,11 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  playerSelection(selection: GameConfigI, user: UserI): void {
-    const { result, updatedUser, player1Selection, player2Selection } =
-      this.gameService.play(selection, user);
-    this.authService.saveCurrentUser(updatedUser);
-    console.log({ result, updatedUser, player1Selection, player2Selection });
+  async playerSelection(selection: GameConfigI, user: UserI): Promise<void> {
+    this.loading = true;
+    this.matchResult = await this.gameService.play(selection, user);
+    this.loading = false;
+    this.authService.saveCurrentUser(this.matchResult.updatedUser);
   }
 
   changeToOtherGame(game: GameConfigI[]): void {

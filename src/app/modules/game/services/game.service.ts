@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { GameConfigI, GameI, ResultsEnum } from '../../../models/Game';
+import { wait } from 'src/app/utils/wait';
+import {
+  GameConfigI,
+  GameI,
+  GameMatchI,
+  ResultsEnum,
+} from '../../../models/Game';
 import { UserI } from '../../../models/User';
 import { GAMES, ROCK_PAPER_SCISSOR } from '../config/game.config';
 
@@ -15,17 +21,12 @@ export class GameService {
     this.gamesAvailable = GAMES;
   }
 
-  play(
-    selection: GameConfigI,
-    user: UserI
-  ): {
-    result: ResultsEnum;
-    updatedUser: UserI;
-    player1Selection: GameConfigI;
-    player2Selection: GameConfigI;
-  } {
+  async play(selection: GameConfigI, user: UserI): Promise<GameMatchI> {
     const machineSelection = this.machineSelection();
     const result = this.result(selection, machineSelection);
+
+    await wait(1000);
+
     const updatedUser = this.updateGameStats(user, result);
 
     return {
