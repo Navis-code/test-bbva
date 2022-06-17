@@ -14,7 +14,11 @@ describe('GameComponent', () => {
   let fixture: ComponentFixture<GameComponent>;
 
   beforeEach(async () => {
-    Object.defineProperty(window.navigator, 'vibrate', {});
+    Object.defineProperty(window, 'navigator', {
+      value: jest.fn().mockImplementation((query) => ({
+        vibrate: jest.fn(),
+      })),
+    });
     await TestBed.configureTestingModule({
       providers: [AuthService],
       imports: [RouterTestingModule],

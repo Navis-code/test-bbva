@@ -7,6 +7,11 @@ import { GameService } from './game.service';
 
 describe('GameService', () => {
   let service: GameService;
+  Object.defineProperty(window, 'navigator', {
+    value: jest.fn().mockImplementation((query) => ({
+      vibrate: jest.fn(),
+    })),
+  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -74,5 +79,19 @@ describe('GameService', () => {
     };
     const gameMatch = service['play'](selection, user);
     expect(gameMatch).toBeTruthy();
+  });
+
+  it('should update gamestats from user', () => {
+    const user: UserI = {
+      name: 'John',
+      gameStats: {
+        win: 0,
+        draw: 0,
+        lose: 0,
+      },
+    };
+    const result = ResultsEnum.WIN;
+    const updatedUser = service['updateGameStats'](user, result);
+    expect(updatedUser.gameStats.win).toBe(1);
   });
 });
