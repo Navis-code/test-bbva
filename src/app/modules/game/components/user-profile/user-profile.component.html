@@ -1,11 +1,14 @@
 <ng-container *ngIf="currentUser">
-    <header class="flex gap-2 pb-1 text-white border-b border-secondary-400">
+    <header class="flex items-center gap-2 pb-2 text-white border-b-2 border-secondary-400">
         <p class="mr-auto text-xl truncate max-w-[15rem]">
             Player:
-            <span class="font-semibold">{{currentUser.name}}</span>
+            <span class="font-semibold text-secondary-500">{{currentUser.name}}</span>
         </p>
+        <a class="btn btn-secondary" routerLink="/">Home</a>
+    </header>
+    <div class="flex justify-center text-xl text-white">
         <p title="wins">👍 {{currentUser.gameStats.win}}</p>
         <p title="draws">🤙 {{currentUser.gameStats.draw}}</p>
         <p title="loses">👎 {{currentUser.gameStats.lose}}</p>
-    </header>
+    </div>
 </ng-container>
