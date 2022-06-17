@@ -29,7 +29,9 @@ export class GameService {
     await wait(1000);
 
     const updatedUser = this.updateGameStats(user, result);
-
+    if (result === ResultsEnum.LOSE) {
+      window.navigator.vibrate(500);
+    }
     return {
       result,
       updatedUser,
