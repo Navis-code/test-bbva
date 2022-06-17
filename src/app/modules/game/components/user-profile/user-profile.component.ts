@@ -8,7 +8,6 @@ import { UserI } from '../../../../models/User';
 })
 export class UserProfileComponent implements OnInit {
   @Input() currentUser!: UserI | null;
-  @Input() updateUserFunction!: (args: UserI) => void;
 
   constructor() {}
 

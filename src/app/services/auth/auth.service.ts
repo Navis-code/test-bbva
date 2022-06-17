@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   private createNewUser(userName: string): UserI {
-    const newUser = { name: userName, gameStats: { win: 0, lose: 0 } };
+    const newUser = { name: userName, gameStats: { win: 0, lose: 0, draw: 0 } };
     this.storage.setNewUser(newUser);
     return newUser;
   }
