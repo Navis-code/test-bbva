@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { ResultsEnum } from '../../../models/Game';
+import { UserI } from '../../../models/User';
 import { GAMES } from '../config/game.config';
 
 import { GameService } from './game.service';
@@ -45,5 +46,33 @@ describe('GameService', () => {
     const selection2 = { beats: ['Paper'], name: 'Scissors', visual: '✌' };
 
     expect(service['result'](selection1, selection2)).toBe(ResultsEnum.DRAW);
+  });
+
+  it('should update user stats', () => {
+    const user: UserI = {
+      name: 'John',
+      gameStats: {
+        win: 0,
+        draw: 0,
+        lose: 0,
+      },
+    };
+    const result = ResultsEnum.WIN;
+    const updatedUser = service['updateGameStats'](user, result);
+    expect(updatedUser.gameStats.win).toBe(1);
+  });
+
+  it('should return gameMatch as promise when play', () => {
+    const selection = { beats: ['Scissors'], name: 'Rock', visual: '✊' };
+    const user: UserI = {
+      name: 'John',
+      gameStats: {
+        win: 0,
+        draw: 0,
+        lose: 0,
+      },
+    };
+    const gameMatch = service['play'](selection, user);
+    expect(gameMatch).toBeTruthy();
   });
 });
