@@ -1,6 +1,11 @@
 <ng-container *ngIf="currentUser">
-    <p>USERNAME: {{currentUser.name}}</p>
-    <p>WIN: {{currentUser.gameStats.win}}</p>
-    <p>LOSE: {{currentUser.gameStats.lose}}</p>
-    <p>DRAW: {{currentUser.gameStats.draw}}</p>
+    <header class="flex gap-2 pb-1 text-white border-b border-secondary-400">
+        <p class="mr-auto text-xl truncate max-w-[15rem]">
+            Player:
+            <span class="font-semibold">{{currentUser.name}}</span>
+        </p>
+        <p title="wins">👍 {{currentUser.gameStats.win}}</p>
+        <p title="draws">🤙 {{currentUser.gameStats.draw}}</p>
+        <p title="loses">👎 {{currentUser.gameStats.lose}}</p>
+    </header>
 </ng-container>

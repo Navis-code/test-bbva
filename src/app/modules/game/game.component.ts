@@ -10,6 +10,7 @@ import { GameService } from './services/game.service';
   styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
+  showGames = false;
   constructor(
     public authService: AuthService,
     public gameService: GameService
@@ -26,5 +27,6 @@ export class GameComponent implements OnInit {
 
   changeToOtherGame(game: GameConfigI[]): void {
     this.gameService.changeGame(game);
+    this.showGames = !this.showGames;
   }
 }
