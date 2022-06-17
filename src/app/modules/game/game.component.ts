@@ -27,8 +27,8 @@ export class GameComponent implements OnInit {
     this.authService.saveCurrentUser(this.matchResult.updatedUser);
   }
 
-  changeToOtherGame(game: GameConfigI[]): void {
+  changeToOtherGame = (game: GameConfigI[]): void => {
     this.gameService.changeGame(game);
     this.showGames = !this.showGames;
-  }
+  };
 }
