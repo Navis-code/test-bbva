@@ -4,39 +4,39 @@ export const ROCK_PAPER_SCISSOR: GameConfigI[] = [
   {
     name: 'Rock',
     beats: ['Scissors'],
-    visual: '🗻',
+    visual: '✊',
   },
   {
     name: 'Paper',
     beats: ['Rock'],
-    visual: '📄',
+    visual: '✋',
   },
   {
     name: 'Scissors',
     beats: ['Paper'],
-    visual: '✂️',
+    visual: '✌',
   },
 ];
 export const ROCK_PAPER_SCISSOR_LAZOR_SPOCK: GameConfigI[] = [
   {
     name: 'Rock',
     beats: ['Scissors', 'Lazor'],
-    visual: '🗻',
+    visual: '✊',
   },
   {
     name: 'Paper',
     beats: ['Rock', 'Spock'],
-    visual: '📄',
+    visual: '✋',
   },
   {
     name: 'Scissors',
     beats: ['Paper', 'Lazor'],
-    visual: '✂️',
+    visual: '✌',
   },
   {
     name: 'Lazor',
     beats: ['Spock', 'Paper'],
-    visual: '🦎',
+    visual: '🤏',
   },
   {
     name: 'Spock',
