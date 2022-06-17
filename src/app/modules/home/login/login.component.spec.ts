@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { GameComponent } from '../../game/game.component';
 
 import { LoginComponent } from './login.component';
 
@@ -10,7 +11,12 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, RouterTestingModule],
+      imports: [
+        ReactiveFormsModule,
+        RouterTestingModule.withRoutes([
+          { path: 'game', component: GameComponent },
+        ]),
+      ],
       declarations: [LoginComponent],
     }).compileComponents();
 
@@ -36,5 +42,13 @@ describe('LoginComponent', () => {
     expect(compiled.querySelector('h1')?.textContent).toContain(
       'rock paper scissors'
     );
+  });
+
+  it('should login and init user if name exist on form', () => {
+    const name = 'testUser';
+    const authSpy = jest.spyOn(component['authService'], 'initUser');
+    component.logInForm.setValue({ name });
+    component.login();
+    expect(authSpy).toHaveBeenCalledWith(name);
   });
 });
