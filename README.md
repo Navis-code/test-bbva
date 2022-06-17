@@ -1,27 +1,58 @@
-# TestBbva
+# Rock Paper Scissor GAME
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
+## Description
 
-## Development server
+A PWA where the user can play a classic game and keep the score.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Coding task for BBVA
 
-## Code scaffolding
+![Demo](rock-paper-scissor.gif)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Table of Contents (Optional)
 
-## Build
+- [Installation](#installation)
+- [Usage](#usage)
+- [Demo](#demo)
+- [Test](#test)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+```
+npm install
+npm start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Running end-to-end tests
+1. Log In with a user name
+2. If is the first time your score will be at 0
+3. If you are a previous player you will see your score
+4. Select your choice and fight against the machine.
+5. You can select Lazor Spock variant from the modal.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Demo
 
-## Further help
+[Demo](https://rockpaperscissor-test.netlify.app/)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/97196214-0ae2-4d8e-b2a8-ea850265c385/deploy-status)](https://app.netlify.com/sites/rockpaperscissor-test/deploys)
+
+## Test
+
+You can run all the test with:
+
+```
+npm run test
+```
+
+Also you can check the test coverage with:
+
+```
+npm run test:coverage
+```
+
+---
+
+## Features
+
+- Include vibration on mobile devices
+- Include game: rock, paper, scissor, lazor, spock
