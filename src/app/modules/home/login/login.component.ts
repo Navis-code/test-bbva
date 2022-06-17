@@ -9,6 +9,7 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   logInForm: FormGroup;
+  title = 'rock paper scissors';
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.logInForm = this.fb.group({
